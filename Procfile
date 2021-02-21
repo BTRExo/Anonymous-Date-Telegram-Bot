@@ -1,2 +1,2 @@
-python3 ChatBot.py
+web: python3 ChatBot.py
 
