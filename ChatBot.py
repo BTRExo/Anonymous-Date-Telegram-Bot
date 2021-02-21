@@ -6,8 +6,6 @@ from dataEgine import *
 from os import environ
 from flask import Flask
 
-app = Flask(__name__)
-app.run(environ.get('PORT'))
 
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
@@ -227,3 +225,7 @@ if __name__ == '__main__':
     recovery_data()
     bot.stop_polling()
     bot.polling(none_stop=True)
+
+
+app = Flask(__name__)
+app.run(environ.get('PORT'))
