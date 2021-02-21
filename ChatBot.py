@@ -3,6 +3,11 @@ from telebot import types
 
 from Messages import *
 from dataEgine import *
+from os import environ
+from flask import Flask
+
+app = Flask(__name__)
+app.run(environ.get('PORT'))
 
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
