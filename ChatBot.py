@@ -10,7 +10,18 @@ PORT = int(os.environ.get('PORT', 5000))
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
 bot = telebot.TeleBot(access_token)
+updater = Updater(access_token, use_context=True)
 
+   
+    dp = updater.dispatcher
+
+   
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=access_token)
+    updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
+
+    updater.idle()
 
 def inline_menu():
     """
@@ -222,22 +233,8 @@ def echo(call):
 
 
 if __name__ == '__main__':
-    """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
-    updater = Updater(access_token, use_context=True)
-
-    # Get the dispatcher to register handlers
-    dp = updater.dispatcher
-
    
-    updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
-                          url_path=access_token)
-    updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
-
-   
+    
     recovery_data()
     bot.stop_polling()
     bot.polling(none_stop=True)
