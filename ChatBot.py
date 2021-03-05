@@ -230,6 +230,7 @@ def main():
     updater.idle()
     
 if __name__ == '__main__':
+    main()
     recovery_data()
     bot.stop_polling()
     bot.polling(none_stop=True)
