@@ -241,3 +241,6 @@ if __name__ == '__main__':
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
+    recovery_data()
+    bot.stop_polling()
+    bot.polling(none_stop=True)
