@@ -1,10 +1,11 @@
 import telebot
 from telebot import types
-
+import os
 from Messages import *
 from dataEgine import *
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-
+PORT = int(os.environ.get('PORT', 5000))
 
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
@@ -221,6 +222,32 @@ def echo(call):
 
 
 if __name__ == '__main__':
-    recovery_data()
-    bot.stop_polling()
-    bot.polling(none_stop=True)
+    """Start the bot."""
+    # Create the Updater and pass it your bot's token.
+    # Make sure to set use_context=True to use the new context based callbacks
+    # Post version 12 this will no longer be necessary
+    updater = Updater(access_token, use_context=True)
+
+    # Get the dispatcher to register handlers
+    dp = updater.dispatcher
+
+    # on different commands - answer in Telegram
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("help", help))
+
+    # on noncommand i.e message - echo the message on Telegram
+    dp.add_handler(MessageHandler(Filters.text, echo))
+
+    # log all errors
+    dp.add_error_handler(error)
+
+    # Start the Bot
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=access_token)
+    updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
+
+    # Run the bot until you press Ctrl-C or the process receives SIGINT,
+    # SIGTERM or SIGABRT. This should be used most of the time, since
+    # start_polling() is non-blocking and will stop the bot gracefully.
+    updater.idle()
