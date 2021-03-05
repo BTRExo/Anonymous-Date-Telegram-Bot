@@ -10,13 +10,7 @@ PORT = int(os.environ.get('PORT', 5000))
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
 bot = telebot.TeleBot(access_token)
-updater = Updater(access_token, use_context=True)
-dp = updater.dispatcher
-updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
-                          url_path=access_token)
-updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
-updater.idle()
+
 
 def inline_menu():
     """
@@ -226,10 +220,16 @@ def echo(call):
         bot.send_message(user_id, m_is_connect, reply_markup=keyboard)
         bot.send_message(user_to_id, m_is_connect, reply_markup=keyboard)
 
-
-if __name__ == '__main__':
-   
+def main():
+    updater = Updater(access_token, use_context=True)
+    dp = updater.dispatcher
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=access_token)
+    updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
+    updater.idle()
     
+if __name__ == '__main__':
     recovery_data()
     bot.stop_polling()
     bot.polling(none_stop=True)
