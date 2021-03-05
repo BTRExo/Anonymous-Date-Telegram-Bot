@@ -231,7 +231,7 @@ def echo(call):
     updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
     updater.idle()"""
     
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     recovery_data()
     bot.stop_polling()
-    bot.polling(none_stop=True)
+    bot.polling(none_stop=True)"""
