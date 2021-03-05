@@ -1,11 +1,11 @@
 import telebot
 from telebot import types
-import os
+#import os
 from Messages import *
 from dataEgine import *
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+#from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-PORT = int(os.environ.get('PORT', 5000))
+#PORT = int(os.environ.get('PORT', 5000))
 
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
@@ -220,7 +220,7 @@ def echo(call):
         bot.send_message(user_id, m_is_connect, reply_markup=keyboard)
         bot.send_message(user_to_id, m_is_connect, reply_markup=keyboard)
 
-def main():
+"""def main():
     updater = Updater(access_token, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(MessageHandler(Filters.text, echo))
@@ -229,9 +229,9 @@ def main():
                           port=int(PORT),
                           url_path=access_token)
     updater.bot.setWebhook('https://anonmat-bot.herokuapp.com/' + access_token)
-    updater.idle()
+    updater.idle()"""
     
 if __name__ == '__main__':
-    main()
     recovery_data()
-    
+    bot.stop_polling()
+    bot.polling(none_stop=True)
