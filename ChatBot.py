@@ -233,5 +233,5 @@ def echo(call):
     
 if __name__ == '__main__':
     recovery_data()
-    '''bot.stop_polling()
-    bot.polling(none_stop=True)'''
+    bot.stop_polling()
+    bot.polling(none_stop=True)
