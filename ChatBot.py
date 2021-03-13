@@ -10,7 +10,7 @@ PORT = int(os.environ.get('PORT', 5000))
 
 access_token = '1600538155:AAHv3_amJ7t1FyCt3MLGZL8JHluFZMrsGrc'
 bot = telebot.TeleBot(access_token)
-
+set_webhook(self, url='https://anonmat-bot.herokuapp.com/' + access_token, certificate=None, max_connections=None, allowed_updates=None, ip_address= 0.0.0.0, drop_pending_updates=None, timeout=None)
 
 def inline_menu():
     """
