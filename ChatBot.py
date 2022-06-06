@@ -8,8 +8,8 @@ from dataEgine import *
 PORT = int(os.environ.get('PORT', 5000))
 
 
-access_token = '5597090092:AAF7yVefZqJst42URtYH69MBwK6qZxiUFN0'
-bot = telebot.TeleBot(access_token)
+access_token = ''
+bot = telebot.TeleBot("5597090092:AAF7yVefZqJst42URtYH69MBwK6qZxiUFN0")
 
 
 def inline_menu():
